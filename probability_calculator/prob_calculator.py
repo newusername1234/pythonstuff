@@ -25,11 +25,13 @@ def experiment(hat,expected_balls,num_balls_drawn,num_experiments):
     for n in range(0,num_experiments):
         new_hat = copy.deepcopy(hat)
         drawn = defaultdict(lambda: 0)
+        failed = False
         for ball in new_hat.draw(num_balls_drawn):
             drawn[ball] += 1
         for key,value in expected_balls.items():
             if drawn[key] < value:
-                break
+                failed = True
+        if not failed:
             successes += 1
     probability = (successes/num_experiments)*100
     return f'{round(probability,2)}%'
