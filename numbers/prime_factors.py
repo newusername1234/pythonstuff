@@ -1,7 +1,5 @@
 # take input and display all prime factors if any
 
-
-
 def get_prime_factors(n):
             
     def gen_primes(n):
